@@ -27,7 +27,8 @@ app.get('/profile/:id', function (req, res) {
 
 app.post('/contact', urlencodedParser, function (req, res) {
     console.log(req.body);
-    res.render('echoejs', {data: req.body});
+    //res.render('echoejs', {data: req.body});
+    res.json(req.body);
 });
 
 
