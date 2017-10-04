@@ -42,6 +42,6 @@ app.get('/contact/curlpost', function (req, res) {
     res.render('contact', {qs: req.query});
 });
 
-
+app.disable('x-powered-by');
 
 app.listen(80);
