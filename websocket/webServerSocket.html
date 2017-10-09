@@ -1,0 +1,27 @@
+<script>
+
+    function makeid() {
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        for (var i = 0; i < 5; i++)
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+        return text;
+    }
+
+
+    var socket = new WebSocket('ws://localhost:5000');
+
+    socket.onopen = function (event) {
+        window.setInterval(function () {
+//            socket.send('ping from client ' + new Date());
+//            socket.send('Hello Jello How are You');
+            socket.send(makeid());
+        }, 2000);
+        socket.onmessage = function (event) {
+            console.log(event.data);
+        }
+    }
+
+</script>

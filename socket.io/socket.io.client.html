@@ -1,0 +1,20 @@
+<script src="../node_modules/socket.io-client/dist/socket.io.js">
+</script>
+
+<script>
+    var socket = io('http://localhost:8000');
+    socket.on('alert', function (data) {
+        console.log(data);
+    });
+
+    socket.on('name', function (data) {
+       console.log(data);
+    });
+
+    socket.emit('click', 'ping from client: ' + Math.random());
+
+    socket.on('disconnect', function (data) {
+       console.log(data);
+    });
+
+</script>
