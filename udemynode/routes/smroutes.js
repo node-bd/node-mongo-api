@@ -6,15 +6,21 @@ module.exports = function (express, app) {
     var dataArray = [{pageTitle: 'Page Title'}];
     console.log(dataArray[0].pageTitle);
 
+
     router.get('/', function (req, res, next) {
         res.render('index', {data: data});
     });
 
-    router.get('/chatrooms', function (req, res, next) {
+
+    router.get('/smtestroutes', function (req, res, next) {
         res.render('index', {data: data});
     });
 
-    app.use('/routes',router);
+    router.get('/smchatroutes', function (req, res, next) {
+        res.render('index', {data: data});
+    });
+
+    app.use('/smroutes', router);
 
     // app.use('/', router);
 
