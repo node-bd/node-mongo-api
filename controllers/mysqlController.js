@@ -45,8 +45,7 @@ module.exports = function (app) {
             // for(var i = 0; i < result.length; i++){
             //     res.send(results[i].card);
             // }
-
-
+            
             // res.json(results);
             res.send(results);
 
@@ -85,7 +84,6 @@ module.exports = function (app) {
 
         var result;
 
-
         connection.query('select * from b_cardoptions where cardoption = \'' + req.params.cardoption + '\'', function (error, results, fields) {
             if (error) throw error;
             console.log(req.params.cardoption);
@@ -99,7 +97,6 @@ module.exports = function (app) {
             // for(var i = 0; i < result.length; i++){
             //     res.send(results[i].card);
             // }
-
 
             // res.json(results);
             res.send(results);
@@ -121,7 +118,6 @@ module.exports = function (app) {
                 + req.query.notes
                 + '\' where cardoption = \''
                 + req.query.cardoption + '\'';
-
 
             console.log(query);
 

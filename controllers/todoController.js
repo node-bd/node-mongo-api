@@ -1,9 +1,7 @@
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
-
 var urlencodedParser = bodyParser.urlencoded({extended: false});
-
 
 mongoose.connect('mongodb://test:test@ds147454.mlab.com:47454/todos');
 
