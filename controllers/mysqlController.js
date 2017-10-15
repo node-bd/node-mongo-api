@@ -45,7 +45,7 @@ module.exports = function (app) {
             // for(var i = 0; i < result.length; i++){
             //     res.send(results[i].card);
             // }
-            
+
             // res.json(results);
             res.send(results);
 
@@ -152,6 +152,7 @@ module.exports = function (app) {
         });
 
     });
+
 
 };
 
