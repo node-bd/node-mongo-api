@@ -95,9 +95,6 @@ module.exports = function (express, app, bodyParser, request) {
     // SEND OTP API
     function sendOTP(res, operator, ano, message) {
 
-        console.log(ano);
-        console.log(message);
-
         var options = {
             url: 'http://103.239.252.108/Voiceadda_AIRTEL_API/sendOTP.php',
             form: {ano: ano, message: message},
@@ -115,11 +112,10 @@ module.exports = function (express, app, bodyParser, request) {
 
         request(options, callback);
     }
+
     ///////////////////////////////////////////
     // checkIVR API
     function checkIVR(res, operator, bno) {
-
-        console.log(bno);
 
         var options = {
             url: 'http://addabaji.mobi/Addabaji_AIRTEL_API/ivr1chk.php',
@@ -143,11 +139,9 @@ module.exports = function (express, app, bodyParser, request) {
     // Subscribe User API
     function subscribeUser(res, operator, productid, msisdn) {
 
-        console.log(bno);
-
         var options = {
-            url: 'http://addabaji.mobi/Addabaji_AIRTEL_API/ivr1chk.php',
-            form: {bno: bno},
+            url: 'http://api.boomtalk.me/voiceadda/Webservices_app/addabajiConcent.php',
+            form: {productid: productid, msisdn: msisdn},
             headers: {
                 'User-Agent': 'request'
             }
@@ -164,6 +158,138 @@ module.exports = function (express, app, bodyParser, request) {
     }
 
 
+    // IVR Registration User API
+    function ivrRegistrationUser(res, operator,
+                                 package_id, msisdn, gender,
+                                 age, name, profile_img,
+                                 profile_voice) {
+
+        var options = {
+            url: 'http://voiceadda.com/apprqwapconsent.php',
+            form: {
+                package_id: package_id, msisdn: msisdn, gender: gender,
+                age: age, name: name, profile_img: profile_img,
+                profile_voice: profile_voice
+            },
+            headers: {
+                'User-Agent': 'request'
+            }
+        };
+
+        function callback(error, response, body) {
+            if (!error && response.statusCode == 200) {
+                var info = JSON.parse(body);
+                res.send(info);
+            }
+        }
+
+        request(options, callback);
+    }
+
+    // TopUP User API
+    function topUpUser(res, operator, msisdn) {
+
+        var options = {
+            url: 'http://addabaji.mobi/Addabaji_AIRTEL_API/voiceaddatopup.php',
+            form: {msisdn: msisdn},
+            headers: {
+                'User-Agent': 'request'
+            }
+        };
+
+        function callback(error, response, body) {
+            if (!error && response.statusCode == 200) {
+                var info = JSON.parse(body);
+                res.send(info);
+            }
+        }
+
+        request(options, callback);
+    }
+
+    // UnSubscribe User API
+    function unsubscribeUser(res, operator, msisdn, package) {
+
+        var options = {
+            url: 'http://voiceadda.com/appderegister.php    ',
+            form: {msisdn: msisdn, package: package},
+            headers: {
+                'User-Agent': 'request'
+            }
+        };
+
+        function callback(error, response, body) {
+            if (!error && response.statusCode == 200) {
+                var info = JSON.parse(body);
+                res.send(info);
+            }
+        }
+
+        request(options, callback);
+    }
+
+    // getDostID API
+    function getDostID(res, operator, msisdn) {
+
+        var options = {
+            url: 'http://voiceadda.com/getdostid.php',
+            form: {msisdn: msisdn},
+            headers: {
+                'User-Agent': 'request'
+            }
+        };
+
+        function callback(error, response, body) {
+            if (!error && response.statusCode == 200) {
+                var info = JSON.parse(body);
+                res.send(info);
+            }
+        }
+
+        request(options, callback);
+    }
+
+    // getAvailableMinutes API
+    function getAvailableMinutes(res, operator, ano, ServiceID) {
+
+        var options = {
+            url: 'http://voiceadda.com/getfreeminute.php',
+            form: {ano: ano, ServiceID: ServiceID},
+            headers: {
+                'User-Agent': 'request'
+            }
+        };
+
+        function callback(error, response, body) {
+            if (!error && response.statusCode == 200) {
+                var info = JSON.parse(body);
+                res.send(info);
+            }
+        }
+
+        request(options, callback);
+    }
+
+    // updateAvailableMinutes API
+    function updateAvailableMinutes(res, operator, ano, ServiceID, BalanceSec,) {
+
+        var options = {
+            url: 'http://voiceadda.com/walletupdate.php',
+            form: {ano: ano, ServiceID: ServiceID, BalanceSec: BalanceSec},
+            headers: {
+                'User-Agent': 'request'
+            }
+        };
+
+        function callback(error, response, body) {
+            if (!error && response.statusCode == 200) {
+                var info = JSON.parse(body);
+                res.send(info);
+            }
+        }
+
+        request(options, callback);
+    }
 
     app.use('/boomtalkapi', router);
 };
