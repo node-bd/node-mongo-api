@@ -1,12 +1,15 @@
-module.exports = function (express, app, bodyParser, request) {
+module.exports = function (express, app, bodyParser, request, configJSON) {
 
     var router = express.Router();
     var urlencodedParser = bodyParser.urlencoded({extended: false});
 
     function getUserDetails(user, res) {
 
+        console.log(user);
+        console.log(configJSON.api[user]);
+
         var options = {
-            url: 'https://api.github.com/users/' + user,
+            url: configJSON.api[user],
             headers: {
                 'User-Agent': 'request'
             }

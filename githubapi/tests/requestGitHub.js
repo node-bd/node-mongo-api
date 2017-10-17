@@ -1,8 +1,13 @@
+var fs = require('fs');
+var request = require('request');
+
+var configJSON = JSON.parse(fs.readFileSync('./tests/apiGitHub.json', 'utf8'));
+
+
 function gitHubTestRequest() {
-    var request = require('request');
 
     var options = {
-        url: 'https://api.github.com/users/netcse',
+        url: configJSON.api.netcse,
         headers: {
             'User-Agent': 'request'
         }

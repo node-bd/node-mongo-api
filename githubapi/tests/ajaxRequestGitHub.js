@@ -1,7 +1,7 @@
 var ajaxRequest = require('ajax-request');
 
 ajaxRequest({
-    url: 'http://192.168.244.101:8000/boomtalkapi/',
+    url: 'http://localhost:8000/githubapi/',
     method: 'GET',
     data: {'user': 'netcse'},
     headers: {'User-Agent': 'Mozilla/5.0'}
